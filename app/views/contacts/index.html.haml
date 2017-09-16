@@ -1,1 +1,7 @@
-%h1 Contacts
+.card
+  %h2.card-header Contacts
+  .card-body
+    %ul.list-unstyled
+      - @contacts.each do |contact|
+        - cache contact do
+          = render 'contacts/contact', contact: contact

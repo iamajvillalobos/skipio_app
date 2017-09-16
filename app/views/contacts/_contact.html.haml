@@ -1,0 +1,10 @@
+%li.media.contact
+  = image_tag(contact.avatar_url, class: 'd-flex mr-3 avatar')
+  .media-body
+    .row
+      .col
+        %p.lead= contact.name
+    .row
+      .col
+        = link_to 'SMS', '', class: 'btn btn-success'
+        = link_to 'Email', '', class: 'btn btn-primary'
