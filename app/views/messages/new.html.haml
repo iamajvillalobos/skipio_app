@@ -5,12 +5,14 @@
       = form_tag messages_path do
         .form-group
           %label To:
-          = text_field_tag :skipio_id, '', class: 'form-control', 
+          = text_field_tag :contact_name, '', class: 'form-control', 
           value: @contact[:contact_name]
 
         .form-group
           %label Body:
-          = text_area :body, '', class: 'form-control body'
+          = text_area_tag :body, '', class: 'form-control body'
+        
+        = hidden_field_tag :contact_id, @contact[:contact_id]
         
         .d-flex.justify-content-between
           = link_to 'Cancel', contacts_path, class: 'btn btn-warning'
