@@ -1,0 +1,17 @@
+.message
+  .card
+    %h5.card-header New Message
+    .card-body
+      = form_tag messages_path do
+        .form-group
+          %label To:
+          = text_field_tag :skipio_id, '', class: 'form-control', 
+          value: @contact[:contact_name]
+
+        .form-group
+          %label Body:
+          = text_area :body, '', class: 'form-control body'
+        
+        .d-flex.justify-content-between
+          = link_to 'Cancel', contacts_path, class: 'btn btn-warning'
+          = submit_tag 'Send', class: 'btn btn-success'
