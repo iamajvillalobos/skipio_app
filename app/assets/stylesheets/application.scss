@@ -16,4 +16,17 @@
   .card {
     border: 0px !important;
   }
+
+  .avatar {
+    max-width: 30px;
+    max-height: auto;
+  }
+
+  .inbound {
+    text-align: right;
+  }
+}
+
+.thread-body p {
+  margin-bottom: 0;
 }

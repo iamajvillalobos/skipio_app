@@ -6,6 +6,12 @@ module SkipioApi
       HTTParty.post(url, body: body).parsed_response
     end
 
+    def self.from_contact(token, contact_id)
+      url = "#{ENV['SKIPIO_STAGING_URL']}/contacts/#{contact_id}"
+      url += "/messages?token=#{token}"
+      HTTParty.get(url).parsed_response
+    end
+
     def self.success?(response)
       return true if response.nil?
       false

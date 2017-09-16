@@ -10,4 +10,12 @@ class Message < ActiveSupport::TestCase
 
     assert SkipioApi::Message.success?(response)
   end
+
+  test 'fetch messages from contact' do
+    token = ENV['SKIPIO_STAGING_TOKEN']
+    contact_id = '373dfcb8-224c-4253-b4fd-c080569984e1'
+    response = SkipioApi::Message.from_contact(token, contact_id)
+
+    refute_empty response['data']
+  end
 end
