@@ -1,7 +1,8 @@
 module SkipioApi
   class Message
     def self.send(token, contact_id, message_body)
-      url = build_url(token)
+      url = "#{ENV['SKIPIO_STAGING_URL']}/messages?"
+      url += "token=#{token}"
       body = build_body(contact_id, message_body)
       HTTParty.post(url, body: body).parsed_response
     end
@@ -13,16 +14,6 @@ module SkipioApi
       response['data'].sort_by { |message| message['time'] }.reverse
     end
 
-    def self.success?(response)
-      return true if response.nil?
-      false
-    end
-
-    def self.build_url(token)
-      url = "#{ENV['SKIPIO_STAGING_URL']}/messages?"
-      url += "token=#{token}"
-    end
-    
     def self.build_body(contact_id, message_body)
       {
         "recipients": [
