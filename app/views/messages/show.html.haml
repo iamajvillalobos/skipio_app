@@ -5,22 +5,7 @@
     .thread
       - @messages.each do |message|
         - if message['direction'] == 'inbound'
-          .thread-item.inbound
-            .row.mb-3
-              .col-2
-                = image_tag(message['author_avatar_url'], class: 'avatar')
-                %br
-                %small.text-muted= @contact_name.split.first
-              .col-10.thread-body
-                %p= message['body']
-                %small.text-muted= message['time'].to_time.strftime("%b %-d %-l:%M%p")
+          = render 'messages/inbound_message', message: message
         - else
-          .thread-item.outbound
-            .row.mb-3
-              .col-10.thread-body
-                %p= message['body']
-                %small.text-muted= message['time'].to_time.strftime("%b %-d %-l:%M%p")
-              .col-2
-                = image_tag(message['author_avatar_url'], class: 'avatar')    
-                %br
-                %small.text-muted You
+          = render 'messages/outbound_message', message: message
+          

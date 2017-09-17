@@ -1,0 +1,9 @@
+.thread-item.outbound
+  .row.mb-3
+    .col-10.thread-body
+      %p= message['body']
+      %small.text-muted= message['time'].to_time.strftime("%b %-d %-l:%M%p")
+    .col-2
+      = image_tag(message['author_avatar_url'], class: 'avatar')    
+      %br
+      %small.text-muted You
