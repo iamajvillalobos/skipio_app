@@ -9,4 +9,12 @@ class MessagesTest < ApplicationSystemTestCase
 
     assert_text 'This is a message from system'
   end
+
+  test 'user can messages from a contact' do
+    visit contacts_path
+    click_link 'View SMS', match: :first
+
+    assert_text 'Conversation with'
+    assert_text 'You'
+  end
 end
