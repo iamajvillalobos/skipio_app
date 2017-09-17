@@ -19,11 +19,6 @@ class MessagesController < ApplicationController
     token = ENV['SKIPIO_STAGING_TOKEN']
     contact_id = params[:contact_id]
     @contact_name = params[:contact_name]
-    response = SkipioApi::Message.from_contact(token, contact_id)
-    @messages = if response['data']
-                  response['data'].sort_by { |m| m['time'] }.reverse
-                else
-                  []
-                end
+    @messages = SkipioApi::Message.from_contact(token, contact_id)
   end
 end

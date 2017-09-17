@@ -9,7 +9,8 @@ module SkipioApi
     def self.from_contact(token, contact_id)
       url = "#{ENV['SKIPIO_STAGING_URL']}/contacts/#{contact_id}"
       url += "/messages?token=#{token}"
-      HTTParty.get(url).parsed_response
+      response = HTTParty.get(url).parsed_response
+      response['data'].sort_by { |message| message['time'] }.reverse
     end
 
     def self.success?(response)
